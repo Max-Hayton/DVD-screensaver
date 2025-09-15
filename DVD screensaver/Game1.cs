@@ -11,8 +11,7 @@ namespace DVD_screensaver
         private Texture2D _logo;
         private int _logoXPos = 100;
         private int _logoYPos = 100;
-        bool xEdgeHit=true;
-        bool yEdgeHit=true;
+        private int speed = 5;
 
         public Game1()
         {
@@ -20,7 +19,7 @@ namespace DVD_screensaver
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
             _graphics.PreferredBackBufferWidth = 800;
-            _graphics.PreferredBackBufferHeight = 600;
+            _graphics.PreferredBackBufferHeight = 600;//Set window size
         }
 
         protected override void Initialize()
@@ -37,7 +36,7 @@ namespace DVD_screensaver
             // TODO: use this.Content to load your game content here
             _logo = Content.Load<Texture2D>("DVD screensaver");
         }
-
+        
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
@@ -45,34 +44,17 @@ namespace DVD_screensaver
 
             // TODO: Add your update logic here
 
-            if (_logoXPos == 750 || _logoXPos == 0)
+            if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {
-                xEdgeHit=!xEdgeHit;
+                _logoXPos += speed;
+            }
+            else if(Keyboard.GetState().IsKeyDown(Keys.Left))
+            {
+                _logoXPos -= speed;
             }
 
-            if (xEdgeHit==true)
-            {
-                _logoXPos += 2;
-            }
-            else
-            {
-                _logoXPos -= 2;
-            }
 
-            if (_logoYPos == 550 || _logoYPos == 0)
-            {
-                yEdgeHit = !yEdgeHit;
-            }
-
-            if (yEdgeHit == true)
-            {
-                _logoYPos += 2;
-            }
-            else
-            {
-                _logoYPos -= 2;
-            }
-            base.Update(gameTime);
+                base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
