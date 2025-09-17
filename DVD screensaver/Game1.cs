@@ -15,6 +15,7 @@ namespace DVD_screensaver
         private int _enemyXPos = 200;
         private int _enemyYPos = 200;
         private int _logoSpeed = 5;
+        private bool _isEnemyShown = true;
 
         public Game1()
         {
@@ -50,7 +51,7 @@ namespace DVD_screensaver
 
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {
-                if(_logoXPos + 50 <=_graphics.PreferredBackBufferWidth)
+                if(_logoXPos + _logo.Width <=_graphics.PreferredBackBufferWidth)
                 {
                     _logoXPos += _logoSpeed;
                 }
@@ -64,7 +65,7 @@ namespace DVD_screensaver
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Down))
             {
-                if (_logoYPos + 50 <= _graphics.PreferredBackBufferHeight)
+                if (_logoYPos + _logo.Height <= _graphics.PreferredBackBufferHeight)
                 {
                     _logoYPos += _logoSpeed;
                 }
@@ -76,10 +77,17 @@ namespace DVD_screensaver
                     _logoYPos -= _logoSpeed;
                 }
             }
+            if (_logoXPos + _logo.Width == _enemyXPos && _logoYPos + _logo.Height <= _enemyYPos + _enemy.Height)
+            {
+                _isEnemyShown = false;
+            }
+            
+
+            
 
 
 
-            base.Update(gameTime);
+                base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
@@ -88,8 +96,11 @@ namespace DVD_screensaver
 
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
-            _spriteBatch.Draw(_logo, new Rectangle(_logoXPos,_logoYPos,50,50), Color.White);
-            _spriteBatch.Draw(_enemy, new Rectangle(_enemyXPos,_enemyYPos,50,50),Color.White);
+            _spriteBatch.Draw(_logo, new Rectangle(_logoXPos,_logoYPos,_logo.Width,_logo.Height), Color.White);
+            if (_isEnemyShown == true)
+            {
+                _spriteBatch.Draw(_enemy, new Rectangle(_enemyXPos, _enemyYPos, 50, 50), Color.White);
+            }
             _spriteBatch.End();
             base.Draw(gameTime);
         }
