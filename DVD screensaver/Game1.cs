@@ -77,13 +77,15 @@ namespace DVD_screensaver
                     _logoYPos -= _logoSpeed;
                 }
             }
-            if (_logoXPos + _logo.Width == _enemyXPos && _logoYPos + _logo.Height <= _enemyYPos + _enemy.Height)
+            if (_logoXPos + _logo.Width == _enemyXPos && _logoYPos + _logo.Height >= _enemyYPos && _logoYPos <= _enemyYPos + _enemy.Height)
             {
                 _isEnemyShown = false;
             }
-            
 
-            
+
+
+
+
 
 
 
@@ -99,7 +101,7 @@ namespace DVD_screensaver
             _spriteBatch.Draw(_logo, new Rectangle(_logoXPos,_logoYPos,_logo.Width,_logo.Height), Color.White);
             if (_isEnemyShown == true)
             {
-                _spriteBatch.Draw(_enemy, new Rectangle(_enemyXPos, _enemyYPos, 50, 50), Color.White);
+                _spriteBatch.Draw(_enemy, new Rectangle(_enemyXPos, _enemyYPos, _enemy.Width, _enemy.Height), Color.White);
             }
             _spriteBatch.End();
             base.Draw(gameTime);
