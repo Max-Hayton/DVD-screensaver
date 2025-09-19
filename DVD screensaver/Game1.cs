@@ -16,6 +16,7 @@ namespace DVD_screensaver
         private int _enemyYPos = 200;
         private int _logoSpeed = 5;
         private bool _isEnemyShown = true;
+        
 
         public Game1()
         {
@@ -44,6 +45,8 @@ namespace DVD_screensaver
         
         protected override void Update(GameTime gameTime)
         {
+            _enemyHitBox = new Rectangle(_enemyXPos, _enemyYPos, _enemy.Width, _enemy.Height);
+            new Rectangle(_logoXPos, _logoYPos, _logo.Width, _logo.Height);
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
@@ -77,11 +80,9 @@ namespace DVD_screensaver
                     _logoYPos -= _logoSpeed;
                 }
             }
-            if (_logoXPos + _logo.Width == _enemyXPos && _logoYPos + _logo.Height >= _enemyYPos && _logoYPos <= _enemyYPos + _enemy.Height)
-            {
-                _isEnemyShown = false;
-            }
+            if 
 
+            
 
 
 
