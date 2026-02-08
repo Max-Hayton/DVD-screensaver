@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/14HaytonM/source/repos/Max-Hayton/DVD-screensaver/DVD screensaver/Content/DVD screensaver.png</File>
+    <File>C:/Users/14HaytonM/source/repos/Max-Hayton/DVD-screensaver/DVD screensaver/Content/Generic Fantasy Enemy.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>
